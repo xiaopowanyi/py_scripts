@@ -19,34 +19,64 @@ def randomly_gen_uspace_url() -> list:
 
 
 # 登录帐户
-def login(username: str, password: str) -> req_Session:
+def login(username, password):
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36",
+        "origin": "https://www.hostloc.com",
+        "referer": "https://www.hostloc.com/home.php?mod=space&do=notice&view=mypost",
+        "content-type": "application/x-www-form-urlencoded"
     }
     login_url = "https://www.hostloc.com/member.php?mod=logging&action=login&loginsubmit=yes&infloat=yes&lssubmit=yes&inajax=1"
     login_data = {
         "fastloginfield": "username",
         "username": username,
         "password": password,
+        "quickforward": "yes",
+        "handlekey": "ls"
     }
     s = req_Session()
     s.post(url=login_url, data=login_data, headers=headers)
     return s
 
-
 # 通过抓取用户设置页面的标题检查是否登录成功
-def check_login_status(s: req_Session, number_c: int) -> bool:
+def check_login_status(s, number_c) :
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36",
+        "origin": "https://www.hostloc.com",
+        "referer": "https://www.hostloc.com/home.php?mod=space&do=notice&view=mypost",
+        "content-type": "application/x-www-form-urlencoded",
+    }
     test_url = "https://www.hostloc.com/home.php?mod=spacecp"
-    res = s.get(test_url)
+    res = s.get(test_url, headers=headers)
     res.encoding = "utf-8"
-    test_title = re.findall("<title>.*?</title>", res.text)
-    if test_title[0] != "<title>个人资料 -  全球主机交流论坛 -  Powered by Discuz!</title>":
-        print("第", number_c, "个帐户登录失败！")
+    test_title = re.findall(u"<title>.*?</title>", res.text)
+    if u"个人资料" not in test_title[0]:
+        print(u"第", number_c, "个帐户登录失败！")
         return False
     else:
-        print("第", number_c, "个帐户登录成功！")
+        point = re.findall(u"积分: (\d+)", res.text)
+        print(u"第", number_c, "个帐户登录成功！当前积分：%s" % point)
         return True
 
+
+# 抓取用户设置页面的积分
+def check_point(s, number_c):
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36",
+        "origin": "https://www.hostloc.com",
+        "referer": "https://www.hostloc.com/home.php?mod=space&do=notice&view=mypost",
+        "content-type": "application/x-www-form-urlencoded",
+    }
+    test_url = "https://www.hostloc.com/home.php?mod=spacecp"
+    res = s.get(test_url, headers=headers)
+    res.encoding = "utf-8"
+    test_title = re.findall(u"<title>.*?</title>", res.text)
+    if u"个人资料" not in test_title[0]:
+        print(u"第", number_c, "个帐户查看积分失败，可能已退出")
+        return -1
+    else:
+        point = re.findall(u"积分: (\d+)", res.text)
+        return point
 
 # 依次访问随机生成的用户空间链接获取积分
 def get_points(s: req_Session, number_c: int):
@@ -85,6 +115,8 @@ if __name__ == "__main__":
             try:
                 s = login(user_list[i], passwd_list[i])
                 get_points(s, i + 1)
+                p = check_point(s, i + 1)
+                print("现在积分：%s" % p)
                 print("*" * 30)
             except Exception as e:
                 print("获取积分异常：" + str(e))

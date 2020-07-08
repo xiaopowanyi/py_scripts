@@ -101,8 +101,8 @@ class Textnow:
     
     for phone in self.PHONE_NUMBER.split(','):
       try:
-          
-        print (u'开始给%s发短信' % phone)
+      
+        print (u'开始给%s发短信' % (phone.replace(''.join(list(phone)[-4:]),'****')))
         
         #点击 新建短信按钮
         new_text_btn = driver.find_element_by_id("newText")

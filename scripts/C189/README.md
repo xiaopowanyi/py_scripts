@@ -1,3 +1,7 @@
+本项目自 [peng4740/Cloud189Checkin-Actions](https://github.com/peng4740/Cloud189Checkin-Actions) 修改而来
+
+---
+
 # Cloud189Checkin
 天翼云盘每日签到一次，抽奖2次  
 使用方法  

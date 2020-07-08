@@ -1,3 +1,7 @@
+本项目自 [xirikm/hostloc-auto-get-points](https://github.com/xirikm/hostloc-auto-get-points) 修改而来
+
+---
+
 # Hostloc Auto Get Points
 使用 GitHub Actions 自动获取 Hostloc 论坛积分.
 
