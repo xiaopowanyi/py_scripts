@@ -1,40 +1,37 @@
-python½Å±¾¼¯£¬Ö§³Öselenium£¬»ùÓÚ[SeleniumBase](https://github.com/seleniumbase/SeleniumBase)ÏîÄ¿
+pythonè„šæœ¬é›†ï¼Œæ”¯æŒseleniumï¼ŒåŸºäº[SeleniumBase](https://github.com/seleniumbase/SeleniumBase)é¡¹ç›®
 
-µ±Ç°¹¦ÄÜ£º
+å½“å‰åŠŸèƒ½ï¼š
 
-1. [TextNow±£ºÅ](<https://github.com/Arronlong/py_scripts/tree/master/scripts/textnow>)
-2. [HostLoc×¬»ı·Ö](<https://github.com/Arronlong/py_scripts/tree/master/scripts/hostloc>)
-3. [ÌìÒíÔÆÅÌÇ©µ½+³é½±](<https://github.com/Arronlong/py_scripts/tree/master/scripts/C189>)
+1. [TextNowä¿å·](<https://github.com/Arronlong/py_scripts/tree/master/scripts/textnow>)
+2. [HostLocèµšç§¯åˆ†](<https://github.com/Arronlong/py_scripts/tree/master/scripts/hostloc>)
+3. [å¤©ç¿¼äº‘ç›˜ç­¾åˆ°+æŠ½å¥–](<https://github.com/Arronlong/py_scripts/tree/master/scripts/C189>)
 
-¹¦ÄÜ¶ÔÓ¦µÄ²ÎÊı£¬Çëµã»÷ºó×ÔĞĞ²é¿´¡£
+åŠŸèƒ½å¯¹åº”çš„å‚æ•°ï¼Œè¯·ç‚¹å‡»åè‡ªè¡ŒæŸ¥çœ‹ã€‚
 
-¸ù¾İĞèÒª×ÔĞĞĞŞ¸Ä.github/workflows/actions.yml½øĞĞÈÎÎñ¶¨ÖÆ
+æ ¹æ®éœ€è¦è‡ªè¡Œä¿®æ”¹.github/workflows/actions.ymlè¿›è¡Œä»»åŠ¡å®šåˆ¶
 
 ---
 
-# Github ActionsËµÃ÷
+# Github Actionsè¯´æ˜
 
-## Ò»¡¢Fork´Ë²Ö¿â(ÒÑforkµÄÎŞĞèÔÙ´Îfork)
+## ä¸€ã€Forkæ­¤ä»“åº“(å·²forkçš„æ— éœ€å†æ¬¡fork)
 
 ![](http://tu.yaohuo.me/imgs/2020/06/f059fe73afb4ef5f.png)
 
-## ¶ş¡¢ÉèÖÃSecret²ÎÊı
+## äºŒã€è®¾ç½®Secretå‚æ•°
 
-¸ù¾İĞèÒªÌí¼Ó¶ÔÓ¦ÈÎÎñµÄ²ÎÊı£¬²ÎÊıËµÃ÷ÇëÖ±½ÓµãÉÏÃæµÄÁ´½Ó½øĞĞ²é¿´¡£
+æ ¹æ®éœ€è¦æ·»åŠ å¯¹åº”ä»»åŠ¡çš„å‚æ•°ï¼Œå‚æ•°è¯´æ˜è¯·ç›´æ¥ç‚¹ä¸Šé¢çš„é“¾æ¥è¿›è¡ŒæŸ¥çœ‹ã€‚
 ![](http://tu.yaohuo.me/imgs/2020/06/748bf9c0ca6143cd.png)
 
-## Èı¡¢ÆôÓÃAction
+## ä¸‰ã€å¯ç”¨Action
 
-1 µã»÷**Action**£¬ÔÙµã»÷**I understand my workflows, go ahead and enable them**  
-2 ĞŞ¸ÄÈÎÒâÎÄ¼şºóÌá½»Ò»´Î  
+1 ç‚¹å‡»**Action**ï¼Œå†ç‚¹å‡»**I understand my workflows, go ahead and enable them**  
+2 ä¿®æ”¹ä»»æ„æ–‡ä»¶åæäº¤ä¸€æ¬¡  
 ![](http://tu.yaohuo.me/imgs/2020/06/34ca160c972b9927.png)
 
-## ËÄ¡¢²é¿´ÔËĞĞ½á¹û
+## å››ã€æŸ¥çœ‹è¿è¡Œç»“æœ
 
 Actions > py_scripts > build  
-ÄÜ¿´µ½ÈçÏÂÍ¼ËùÊ¾£¬±íÊ¾³É¹¦  
-![](https://cdn.jsdelivr.net/gh/Arronlong/cdn/blogImg/20200707132455.png)
-
-´Ëºó£¬½«»áÔÚÃ¿Ìì2:00ºÍ14:00¸÷·¢ËÍÒ»´Î  
-ÈôÓĞĞèÇó£¬¿ÉÒÔÔÚ[.github/workflows/actions.yml]ÖĞ×ÔĞĞĞŞ¸Ä£¬**¡¾´ËÅäÖÃËùÓĞÈÎÎñ¹²Ïí£¬ĞŞ¸ÄĞè½÷É÷¡¿**
+æ­¤åï¼Œå°†ä¼šåœ¨æ¯å¤©2:00å’Œ14:00å„å‘é€ä¸€æ¬¡  
+è‹¥æœ‰éœ€æ±‚ï¼Œå¯ä»¥åœ¨[.github/workflows/actions.yml]ä¸­è‡ªè¡Œä¿®æ”¹ï¼Œ**ã€æ­¤é…ç½®æ‰€æœ‰ä»»åŠ¡å…±äº«ï¼Œä¿®æ”¹éœ€è°¨æ…ã€‘**
 
