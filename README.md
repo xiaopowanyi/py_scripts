@@ -32,9 +32,6 @@ python脚本集，支持selenium，基于[SeleniumBase](https://github.com/selen
 ## 四、查看运行结果
 
 Actions > py_scripts > build  
-能看到如下图所示，表示成功  
-![](https://cdn.jsdelivr.net/gh/Arronlong/cdn/blogImg/20200705173742.png)
-
 此后，将会在每天2:00和14:00各发送一次  
 若有需求，可以在[.github/workflows/actions.yml]中自行修改，**【此配置所有任务共享，修改需谨慎】**
 
