@@ -14,7 +14,7 @@ def main():
     login(username, password)
     rand = str(round(time.time()*1000))
     surl = f'https://api.cloud.189.cn/mkt/userSign.action?rand={rand}&clientType=TELEANDROID&version=8.6.3&model=SM-G930K'
-    url = f'https://m.cloud.189.cn/v2/drawPrizeMarketDetails.action?taskId=TASK_SIGNIN&activityId=ACT_SIGNIN'
+    url  = f'https://m.cloud.189.cn/v2/drawPrizeMarketDetails.action?taskId=TASK_SIGNIN&activityId=ACT_SIGNIN'
     url2 = f'https://m.cloud.189.cn/v2/drawPrizeMarketDetails.action?taskId=TASK_SIGNIN_PHOTOS&activityId=ACT_SIGNIN'
     headers = {
         'User-Agent':'Mozilla/5.0 (Linux; Android 5.1.1; SM-G930K Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/74.0.3729.136 Mobile Safari/537.36 Ecloud/8.6.3 Android/22 clientId/355325117317828 clientModel/SM-G930K imsi/460071114317824 clientChannelId/qq proVersion/1.0.6',
@@ -35,17 +35,24 @@ def main():
         "Accept-Encoding" : "gzip, deflate",
     }
     response = s.get(url,headers=headers)
-    if ("errorCode" in response.text):
-        print(response.text)
-    else:
-        description = response.json()['description']
-        print(f"抽奖获得{description}")
-    response = s.get(url2,headers=headers)
-    if ("errorCode" in response.text):
-        print(response.text)
-    else:
-        description = response.json()['description']
-        print(f"抽奖获得{description}")
+    try:
+      if ("errorCode" in response.text):
+          print(response.json()['errorCode'])
+      elif (response.json().has_key('description')):
+          description = response.json()['description']
+          print(f"抽奖获得{description}")
+    except:
+      print(f"抽奖1完成，解析时失败")
+          
+    try:
+      response2 = s.get(url2,headers=headers)
+      if ("errorCode" in response2.text):
+          print(response.json()['errorCode'])
+      elif (response2.json().has_key('description')):
+          description = response2.json()['description']
+          print(f"抽奖2获得{description}")
+    except:
+      print(f"抽奖2完成，解析时失败")
 
 BI_RM = list("0123456789abcdefghijklmnopqrstuvwxyz")
 def int2char(a):
@@ -130,4 +137,3 @@ def login(username, password):
 
 if __name__ == "__main__":
     main()
-
